@@ -9,14 +9,7 @@
         background: 0;
         border: none;
         @white: #fff;
-        .gradient (@origin: left, @amarillo, @rojo, @morado) {
-            background-color: @white;
-            background-image: -webkit-linear-gradient(@origin, @amarillo, @rojo, @morado);
-            background-image: -moz-linear-gradient(@origin, @amarillo, @rojo, @morado);
-            background-image: -o-linear-gradient(@origin, @amarillo, @rojo, @morado);
-            background-image: -ms-linear-gradient(@origin, @amarillo, @rojo, @morado);
-            background-image: linear-gradient(@origin, @amarillo, @rojo, @morado);
-        }
+        #gradient > .vertical-three-colors(@amarillo, @rojo, @morado);
         margin: 0;
         padding: 60px 0;
 
