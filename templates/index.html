@@ -1,0 +1,128 @@
+<%! from django.utils.translation import ugettext as _ %>
+
+<%! from django.core.urlresolvers import reverse %>
+<%inherit file="main.html" />
+<%namespace name='static' file='static_content.html'/>
+<%block name="pagetitle">${_("B United Online")}</%block>
+<%! from microsite_configuration import microsite %>
+
+<%
+  homepage_overlay_html = microsite.get_value('homepage_overlay_html')
+
+  show_homepage_promo_video = microsite.get_value('show_homepage_promo_video', True)
+  homepage_promo_video_youtube_id = microsite.get_value('homepage_promo_video_youtube_id', "iyz71fvmzWw")
+
+  show_partners = microsite.get_value('show_partners', True)
+
+%>
+
+<section class="home">
+  <header>
+    <div class="outer-wrapper">
+      <div class="title">
+        <hgroup>
+          % if homepage_overlay_html:
+            ${homepage_overlay_html}
+          % else:
+            % if self.stanford_theme_enabled():
+              <h1>${_("Mi Mejor Yo <strong>{university_name}</strong>").format(university_name="Stanford")}</h1>
+            % else:
+              <h1>${_("Mi Mejor Yo")}</h1>
+            % endif
+            <h2>${_("Estudia donde sea, UVP.")}</h2>
+          % endif
+        </hgroup>
+
+          <section class="actions">
+            <div class="main-cta">
+              <a href="#signup-modal" id="signup_action" class="find-courses" rel="leanModal">${_("Sign Up")}</a>
+            </div>
+
+            <div class="secondary-actions">
+              <div class="social-sharing">
+                <div class="sharing-message">${_("Mantente al d&iacutea {platform_name} has to offer!").format(platform_name=settings.PLATFORM_NAME)}</div>
+                <a href="https://twitter.com/UVP_Puebla" class="share">
+                  <img src="${static.url('images/social/twitter-sharing.png')}">
+                </a>
+                <a href="http://www.facebook.com/uvp.pue" class="share">
+                  <img src="${static.url('images/social/facebook-sharing.png')}">
+                </a>
+                <a href="https://plus.google.com/+UvpMxpue" class="share">
+                  <img src="${static.url('images/social/google-plus-sharing.png')}">
+                </a>
+              </div>
+            </div>
+          </section>
+      </div>
+
+      % if show_homepage_promo_video:
+        <a href="#video-modal" class="media" rel="leanModal">
+          <div class="hero">
+            <div class="play-intro"></div>
+          </div>
+        </a>
+      % endif
+    </div>
+  </header>
+  <section class="container">
+    <section class="highlighted-courses">
+      <h1>Con&oacutecenos</h1>
+      <br/>
+      <h2 style="text-align: center;">Reg&iacutestrate a nuestros cursos</h2>
+      <br/>
+      % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
+        <section class="courses">
+            <ul class="courses-listing">
+            %for course in courses:
+              <li class="courses-listing-item">
+                <%include file="course.html" args="course=course" />
+              </li>
+            %endfor
+            </ul>
+        </section>
+      % endif
+
+    </section>
+  </section>
+</section>
+
+<section id="video-modal" class="modal home-page-video-modal video-modal">
+  <div class="inner-wrapper">
+    <%
+      youtube_video_id = homepage_promo_video_youtube_id
+      if self.stanford_theme_enabled():
+        youtube_video_id = "iyz71fvmzWw"
+    %>
+    <iframe width="640" height="360" src="//www.youtube.com/embed/${youtube_video_id}?showinfo=0" frameborder="0" allowfullscreen></iframe>
+  </div>
+</section>
+
+<%block name="js_extra">
+   <script type="text/javascript">
+      $(window).load(function() {
+         if(getParameterByName('next')) {
+              $('#login').trigger("click");
+         }
+      })
+   </script>
+
+   <script>
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+     ga('create', 'UA-61913928-1', 'auto');
+     ga('send', 'pageview');
+
+   </script>
+
+</%block>
+
+% if show_signup_immediately is not UNDEFINED:
+  ## NOTE: This won't work in production, because anonymous views are cached, so it will
+  ## show either with or without this extra js for 3 minutes at a time.
+<script type="text/javascript">
+  $(window).load(function() {$('#signup_action').trigger("click");});
+</script>
+% endif

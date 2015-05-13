@@ -1,8 +1,8 @@
 {
   "name": "edx-theme",
   "private": true,
-  "homepage": "https://github.com/beacloudgenius/edx-theme",
-  "description": "Open edX theme for Cloud Genius",
+  "homepage": "https://github.com/negritobomb/edx-theme",
+  "description": "Open edX theme for UVP",
   "license": "AGPL",
   "dependencies": {
     "bootstrap": "~3.3.0",

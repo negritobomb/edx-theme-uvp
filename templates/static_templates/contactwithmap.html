@@ -1,0 +1,187 @@
+<%! from django.utils.translation import ugettext as _ %>
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("Contact")}</%block>
+
+<section class="static-container contact">
+<h1>${_("Contact")}</h1>
+<p>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Contact Us</h2>
+                <h3 class="section-subheading text-muted">We are online.</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                    <ul class="list-inline">
+
+                        <li class="btn-social btn-outline"><a href="mailto:hello@cloudgeni.us" target="_blank"><i class="fa fa-envelope-o fa-5x"></i></a>
+                        </li>
+                        <li class="btn-social btn-outline"><a href="http://www.facebook.com/beacloudgenius" target="_blank"><i class="fa fa-facebook fa-5x"></i></a>
+                        </li>
+                        <li class="btn-social btn-outline"><a href="http://www.instagram.com/beacloudgenius" target="_blank"><i class="fa fa-instagram fa-5x"></i></a>
+                        </li>
+                        <li class="btn-social btn-outline"><a href="https://www.youtube.com/channel/UCvygomQdqFv_p0c00EYufPA" target="_blank"><i class="fa fa-youtube fa-5x"></i></a>
+                        </li>
+                        <li class="btn-social btn-outline"><a href="http://www.twitter.com/beacloudgenius" target="_blank"><i class="fa fa-twitter fa-5x"></i></a>
+                        </li>
+                        <li class="btn-social btn-outline"><a href="https://plus.google.com/+NileshLondheHere/photos" target="_blank"><i class="fa fa-google-plus fa-5x"></i></a>
+                        </li>
+                        <li class="btn-social btn-outline"><a href="https://www.linkedin.com/edu/alumni?name=Cloud+Genius" target="_blank"><i class="fa fa-linkedin fa-5x"></i></a>
+                        </li>
+                        <li class="btn-social btn-outline"><a href="https://www.meetup.com/cloudgenius" target="_blank"><i class="fa fa-users fa-5x"></i></a>
+                        </li>
+
+                    </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <style>
+                    html, body, #map-canvas {
+                    height: 100%;
+                    margin: 0px;
+                    padding: 0px
+                    }
+                </style>
+                <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+                <script>
+
+var map;
+var kirkland = new google.maps.LatLng(47.705256, -122.16716);
+var jblm = new google.maps.LatLng(47.168292,-122.511122);
+var naperville = new google.maps.LatLng(41.802335,-88.131509);
+var anz = new google.maps.LatLng(-33.763791,151.073398);
+var india = new google.maps.LatLng(23.200053,77.43002);
+
+function initialize() {
+
+  var roadAtlasStyles = [
+    {
+      featureType: 'road.highway',
+      elementType: 'geometry',
+      stylers: [
+        { hue: '#ff0022' },
+        { saturation: 60 },
+        { lightness: -20 }
+      ]
+    },{
+      featureType: 'road.arterial',
+      elementType: 'all',
+      stylers: [
+        { hue: '#2200ff' },
+        { lightness: -40 },
+        { visibility: 'simplified' },
+        { saturation: 30 }
+      ]
+    },{
+      featureType: 'road.local',
+      elementType: 'all',
+      stylers: [
+        { hue: '#f6ff00' },
+        { saturation: 50 },
+        { gamma: 0.7 },
+        { visibility: 'simplified' }
+      ]
+    },{
+      featureType: 'water',
+      elementType: 'geometry',
+      stylers: [
+        { saturation: 40 },
+        { lightness: 40 }
+      ]
+    },{
+      featureType: 'road.highway',
+      elementType: 'labels',
+      stylers: [
+        { visibility: 'on' },
+        { saturation: 98 }
+      ]
+    },{
+      featureType: 'administrative.locality',
+      elementType: 'labels',
+      stylers: [
+        { hue: '#0022ff' },
+        { saturation: 50 },
+        { lightness: -10 },
+        { gamma: 0.90 }
+      ]
+    },{
+      featureType: 'transit.line',
+      elementType: 'geometry',
+      stylers: [
+        { hue: '#ff0000' },
+        { visibility: 'on' },
+        { lightness: -70 }
+      ]
+    }
+  ];
+
+  var mapOptions = {
+    zoom: 2,
+    center: kirkland,
+    mapTypeControlOptions: {
+      mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'usroadatlas']
+    }
+  };
+
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  var marker = new google.maps.Marker({
+      position: kirkland,
+      map: map,
+      title: 'Kirkland Campus'
+  });
+
+  var marker = new google.maps.Marker({
+      position: jblm,
+      map: map,
+      title: 'JBLM RP/6 Campus'
+  });
+
+    var marker = new google.maps.Marker({
+      position: naperville,
+      map: map,
+      title: 'Naperville Campus'
+  });
+
+    var marker = new google.maps.Marker({
+      position: anz,
+      map: map,
+      title: 'Naperville Campus'
+  });
+
+    var marker = new google.maps.Marker({
+      position: india,
+      map: map,
+      title: 'Naperville Campus'
+  });
+
+
+  var styledMapOptions = {
+    name: 'US Road Atlas'
+  };
+
+  var usRoadMapType = new google.maps.StyledMapType(
+      roadAtlasStyles, styledMapOptions);
+
+  map.mapTypes.set('usroadatlas', usRoadMapType);
+  map.setMapTypeId('usroadatlas');
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+                </script>
+
+                <div id="map-canvas"></div>
+            </div>
+        </div>
+
+    </div>
+</p>
+</section>

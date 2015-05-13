@@ -1,0 +1,93 @@
+## mako
+<%! from django.utils.translation import ugettext as _ %>
+<%! from microsite_configuration.templatetags.microsite import platform_name %>
+<%namespace name='static' file='static_content.html'/>
+
+<footer>
+  <div class="footer-container">
+
+    <div class="row">
+
+        <div class="col-sm-4">
+            <img src="${static.url('themes/{theme_name}/images/logo-open-edx.png'.format(theme_name=settings.THEME_NAME))}" width="273" height="48" alt="Be a Cloud Genius" class="img-responsive"/>
+            <br/>
+            <p>
+              Empresa dedicada a la inovaci&oacuten tecnol&oacutegica con un enfoque en varios sectores, como la educaci&oacuten. Contamos con expertos que les ayudar&aacuten a mejorar sus pr&aacutecticas de aprendizaje.
+            </p>
+            <br/>
+          <small>Dedicados a la enseñanza.<br/><br/></small>
+        </div>
+
+        <div class="col-sm-4">
+<!--          <nav class="nav"> -->
+              <h2>Nosotros</h2>
+              <ul>
+<!--                %if settings.MKTG_URL_LINK_MAP.get('ABOUT'):
+<!--                <li>
+<!--                  <a id="about" href="${marketing_link('ABOUT')}">${_("About")}</a>
+<!--                </li>
+<!--                %endif -->
+                <li>
+                  <a href="//www.uvp.mx">Acerca de</a>
+                </li>
+                <br/>
+                %if settings.MKTG_URL_LINK_MAP.get('FAQ'):
+                <li>
+                  <a id="faq" href="${marketing_link('FAQ')}">${_("FAQ")}</a>
+                </li>
+                %endif
+                <br/>
+                %if settings.MKTG_URL_LINK_MAP.get('CONTACT'):
+                <li>
+                  <a id="contact" href="${marketing_link('CONTACT')}">${_("Contacto")}</a>
+                </li>
+                %endif
+                <br/>
+<!--                %if settings.MKTG_URL_LINK_MAP.get('HONOR'):
+<!--                <li>
+<!--                  <a href="${marketing_link('HONOR')}">${_("Honor")}</a>
+<!--                </li>
+<!--                %endif -->
+                %if settings.MKTG_URL_LINK_MAP.get('PRIVACY'):
+                <li>
+                  <a href="${marketing_link('PRIVACY')}">${_("Privacidad")}</a>
+                </li>
+                %endif
+                <br/>
+              </ul>
+<!--          </nav> -->
+        </div>
+
+<!--        float:left; clear: left; margin-left: 20px; -->
+
+        <div class="col-sm-4">
+          <h2>Síguenos</h2>
+          <ul>
+              <li style="list-style-type:none;" class="social-item"><a href="http://www.facebook.com/uvp.pue" target="_blank"><i class="fa fa-facebook fa-3x"></i> Facebook</a>
+              </li>
+              <br/>
+              <li style="list-style-type:none;" class="social-item"><a href="https://twitter.com/UVP_Puebla" target="_blank"><i class="fa fa-twitter fa-3x"></i> Twitter</a>
+              </li>
+              <br/>
+              <li style="list-style-type:none;" class="social-item"><a href="http://www.youtube.com/user/WEBUVP" target="_blank"><i class="fa fa-youtube fa-3x"></i> Youtube</a>
+              </li>
+              <br/>
+          </ul>
+        </div>
+
+    </div>
+
+    <div class="text-center">
+      <font size="2">
+        <p class="copyright">
+          <img src="${static.url('themes/{theme_name}/images/logo-x-white-small.png'.format(theme_name=settings.THEME_NAME))}" width="47" height="32" alt="UVP, Mi mejor yo"/>&nbsp;&nbsp;${_(u"© 2011-2015 {platform_name}®. ©Universidad del Valle de Puebla 2015. Calle 3 Sur 5759, El Cerrito , 72440 Puebla, Pue., México. Todos los derechos reservados.").format(platform_name=platform_name())}</p>
+      </font>
+      <font size="2">
+        <p class="copyright">
+          01 (222) 266 94 88 y 266 94 89  Ext. 124, 208, 227  LADA sin costo: 01-800-63-20422</p>
+      </font>
+    </div>
+
+  </div>
+
+</footer>

@@ -1,0 +1,11 @@
+/* This fixes the top-right-nav size near the name of logged in user
+padding: 10px 10px; <<< after birch
+padding: 8px 10px; <<< for birch
+*/
+
+.view-login header.global-new>nav ol.user>li.primary>a.dropdown, .view-login header.global.slim>nav ol.user>li.primary>a.dropdown, .view-login header.global>nav ol.user>li.primary>a.dropdown, .view-passwordreset header.global-new>nav ol.user>li.primary>a.dropdown, .view-passwordreset header.global.slim>nav ol.user>li.primary>a.dropdown, .view-passwordreset header.global>nav ol.user>li.primary>a.dropdown, .view-register header.global-new>nav ol.user>li.primary>a.dropdown, .view-register header.global.slim>nav ol.user>li.primary>a.dropdown, .view-register header.global>nav ol.user>li.primary>a.dropdown, body header.global-new>nav ol.user>li.primary>a.dropdown, body header.global.slim>nav ol.user>li.primary>a.dropdown, body header.global>nav ol.user>li.primary>a.dropdown {
+  padding: 8px 10px;
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  letter-spacing: normal;
+}
