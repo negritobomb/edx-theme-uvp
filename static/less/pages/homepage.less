@@ -8,13 +8,14 @@
         box-shadow: none;
         background: 0;
         border: none;
-        .gradient-3-way (@origin: left,  @step-1: @amarillo,  @step-2: @rojo,  @step-3: @morado, @fallback: @white){
+        @white: #fff;
+        .gradient (@origin: left, @fallback: @white,  @stops){
             background-color: @fallback;
-            background: -webkit-linear-gradient(@origin, @step-1, @step-2, @step-3) @fallback no-repeat;
-            background:    -moz-linear-gradient(@origin, @step-1, @step-2, @step-3) @fallback no-repeat;
-            background:      -ms-linear-gradient(@origin, @step-1, @step-2, @step-3) @fallback no-repeat;
-            background:      -o-linear-gradient(@origin, @step-1, @step-2, @step-3) @fallback no-repeat;
-            background:         linear-gradient(@origin, @step-1, @step-2, @step-3) @fallback no-repeat;
+            background: -webkit-linear-gradient(@origin, @stops) @fallback no-repeat;
+            background:    -moz-linear-gradient(@origin, @stops) @fallback no-repeat;
+            background:    -ms-linear-gradient(@origin, @stops) @fallback no-repeat;
+            background:      -o-linear-gradient(@origin, @stops) @fallback no-repeat;
+            background:         linear-gradient(@origin, @stops) @fallback no-repeat;
         }
         margin: 0;
         padding: 60px 0;
