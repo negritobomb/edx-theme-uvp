@@ -9,13 +9,13 @@
         background: 0;
         border: none;
         @white: #fff;
-        .gradient (@origin: left, @fallback: @white,  @stops){
-            background-color: @fallback;
-            background: -webkit-linear-gradient(@origin, @stops) @fallback no-repeat;
-            background:    -moz-linear-gradient(@origin, @stops) @fallback no-repeat;
-            background:    -ms-linear-gradient(@origin, @stops) @fallback no-repeat;
-            background:      -o-linear-gradient(@origin, @stops) @fallback no-repeat;
-            background:         linear-gradient(@origin, @stops) @fallback no-repeat;
+        .gradient (@origin: left, @amarillo, @rojo, @morado) {
+            background-color: @white;
+            background-image: -webkit-linear-gradient(@origin, @amarillo, @rojo, @morado);
+            background-image: -moz-linear-gradient(@origin, @amarillo, @rojo, @morado);
+            background-image: -o-linear-gradient(@origin, @amarillo, @rojo, @morado);
+            background-image: -ms-linear-gradient(@origin, @amarillo, @rojo, @morado);
+            background-image: linear-gradient(@origin, @amarillo, @rojo, @morado);
         }
         margin: 0;
         padding: 60px 0;
