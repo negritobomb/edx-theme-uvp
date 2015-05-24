@@ -1,7 +1,7 @@
 {
   "name": "edx-theme",
   "private": true,
-  "homepage": "https://github.com/negritobomb/edx-theme",
+  "homepage": "https://github.com/negritobomb/edx-theme-uvp",
   "description": "Open edX theme for UVP",
   "license": "AGPL",
   "dependencies": {
